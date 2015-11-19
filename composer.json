@@ -1,0 +1,13 @@
+{
+    "name": "jochenja/kingen",
+    "description": "card game according the rules of 'kingen'",
+    "require": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "authors": [
+        {
+            "name": "jochen janssens",
+            "email": "jochenjanssens80@gmail.com"
+        }
+    ]
+}
