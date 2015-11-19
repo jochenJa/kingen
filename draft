@@ -1,0 +1,11 @@
+- a rule can decide if a drawn card can be played from the hand.
+- a hand contains a stack of max 13 unique cards
+- a round has a hand for each player
+- a round keeps going till a play completes the endrule or 13 plays
+- each play requires a card from each hand
+- a completed round will be evaluated to assign a score to each player
+- the players are ordered to a fixed position for the entire game
+- card exsists of a kind and a value
+- a deck contains 52 unique cards
+- a card is unique if it differs from other cards in kind or in value
+
