@@ -9,5 +9,8 @@
             "name": "jochen janssens",
             "email": "jochenjanssens80@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^2.7"
+    }
 }
