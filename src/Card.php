@@ -1,6 +1,6 @@
 <?php
 
-namespace src;
+namespace domain;
 
 class Card
 {
