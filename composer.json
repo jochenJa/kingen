@@ -2,7 +2,8 @@
     "name": "jochenja/kingen",
     "description": "card game according the rules of 'kingen'",
     "require": {
-        "phpunit/phpunit": "^5.0"
+        "phpunit/phpunit": "^5.0",
+        "beberlei/assert": "^2.4"
     },
     "autoload": {
         "psr-4": {"domain\\": "src/"}

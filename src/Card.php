@@ -2,6 +2,7 @@
 
 namespace domain;
 
+
 class Card
 {
     private $kind;
@@ -14,11 +15,28 @@ class Card
      */
     public function __construct($kind, $value)
     {
+        $this->guardKind($kind);
+        $this->guardValue($value);
+
         $this->kind = $kind;
         $this->value = $value;
     }
 
-    // add some guards for kind and value ?
+    /**
+     * @param string $kind
+     */
+    private function guardKind($kind)
+    {
+        \Assert\that($kind)->string()->minLength(1);
+    }
+
+    /**
+     * @param string $value
+     */
+    private function guardValue($value)
+    {
+        \Assert\that($value)->string()->minLength(1);
+    }
 
     /**
      * cards need to be comparable
