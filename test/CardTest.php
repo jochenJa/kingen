@@ -2,7 +2,7 @@
 
 namespace test;
 
-use domain\Card;
+use domain\blueprint\Card;
 
 class CardTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,7 +12,7 @@ class CardTest extends \PHPUnit_Framework_TestCase
     public function card_exsists_of_a_kind_and_a_value()
     {
         $card = new Card('H', '2');
-        $this->assertSame('H2', $card->kind().$card->value());
+        $this->assertSame('H2', (string)$card);
     }
 
     /**

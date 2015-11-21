@@ -1,7 +1,6 @@
 <?php
 
-namespace domain;
-
+namespace domain\blueprint;
 
 class Card
 {
@@ -50,4 +49,6 @@ class Card
 
     public function kind() { return $this->kind; }
     public function value() { return $this->value; }
+
+    public function __toString() { return $this->kind().$this->value(); }
 }
