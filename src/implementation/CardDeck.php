@@ -1,6 +1,6 @@
 <?php
 
-namespace domain;
+namespace domain\implementation;
 
 use domain\blueprint\Card;
 use domain\blueprint\CardFactoryInterface;
@@ -27,7 +27,12 @@ class CardDeck implements DeckInterface
     /**
      * @inheritdoc
      */
-    public function drawCard() { return array_pop($this->deck); }
+    public function drawCard()
+    {
+        if(! $this->hasCards()) throw new OutOfCardsException();
+
+        return array_shift($this->deck);
+    }
 
     /**
      * @inheritdoc
@@ -52,15 +57,7 @@ class CardDeck implements DeckInterface
     {
         if(! $this->hasCards()) $this->reset();
 
-        $deckWithKeys = array_combine(
-            array_map(function(Card $card) { return (string)$card; }, $this->deck),
-            $this->deck
-        );
-
-        $this->deck = array_map(
-            function($randomCardKey) use ($deckWithKeys) { return $deckWithKeys[$randomCardKey]; },
-            array_rand($deckWithKeys, count($deckWithKeys))
-        );
+        shuffle($this->deck);
     }
 
     /**
@@ -69,3 +66,5 @@ class CardDeck implements DeckInterface
     public function hasCards() { return count($this->deck) > 0; }
     public function reset() { $this->deck = $this->cardFactory->generateCards(); }
 }
+
+class OutOfCardsException extends \Exception {}
