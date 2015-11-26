@@ -2,8 +2,11 @@
 
 namespace test;
 
+use domain\blueprint\Dealer;
 use domain\blueprint\Hand;
 use domain\blueprint\Round;
+use domain\implementation\CardDeck;
+use domain\implementation\CardFactory;
 
 class RoundTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,17 +28,26 @@ class RoundTest extends \PHPUnit_Framework_TestCase
         $this->assertContains($h2, $hands);
     }
 
-    public function a_croupier_will_divide_a_carddeck_among_hands()
+    /**
+     * @test
+     */
+    public function a_dealer_will_divide_a_deck_among_hands()
     {
-        /*
-        $round->fillHands(
-            new Croupier(new CardDeck(), 4, 5, 4)
-        )
-        );
-        */
+        $deck = $this->fiftyTwoCards();
+        $round = new Round();
+        $round->addHand(new Hand(), new Hand(), new Hand(), new Hand());
 
-        //expected
-        // each hand will have 13 cards.
-        // deck is empty.
+        $round->fillHands(new Dealer($deck, 13));
+
+        $this->assertFalse($deck->hasCards());
+        $this->assertSame(
+            [13, 13, 13, 13],
+            array_map(
+                function(Hand $hand) { return $hand->countCards(); },
+                $round->hands()
+            )
+        );
     }
+
+    private function fiftyTwoCards() { return new CardDeck(new CardFactory()); }
 }

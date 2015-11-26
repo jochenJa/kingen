@@ -4,6 +4,7 @@ namespace domain\implementation;
 
 use domain\blueprint\CardFactoryInterface;
 use domain\blueprint\DeckInterface;
+use domain\blueprint\OutOfCardsException;
 
 class CardDeck implements DeckInterface
 {
@@ -65,5 +66,3 @@ class CardDeck implements DeckInterface
     public function hasCards() { return count($this->deck) > 0; }
     public function reset() { $this->deck = $this->cardFactory->generateCards(); }
 }
-
-class OutOfCardsException extends \Exception {}

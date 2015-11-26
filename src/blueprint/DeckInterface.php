@@ -6,13 +6,14 @@ interface DeckInterface
 {
     /**
      * @return Card;
+     * @throws OutOfCardsException
      */
     public function drawCard();
 
     /**
-     *
      * @param integer $count
-     * @return Card[] ;
+     * @return Card[];
+     * @throws OutOfCardsException
      */
     public function drawCards($count);
 
@@ -26,3 +27,5 @@ interface DeckInterface
     public function reset();
 
 }
+
+class OutOfCardsException extends \Exception {}
