@@ -2,19 +2,27 @@
 
 namespace test;
 
+use domain\blueprint\Hand;
+use domain\blueprint\Round;
+
 class RoundTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @test
+     */
     public function add_a_hand_to_a_round()
     {
-        $handPlayer1 = new Hand();
-        $handPlayer2 = new Hand();
+        $h1 = new Hand();
+        $h2 = new Hand();
 
         $round = new Round();
-        $round->addHand($handPlayer1);
-        $round->addHand($handPlayer2);
+        $round->addHand($h1, $h2);
 
         // expected
-        $this->assertCount(2, $round->hands());
+        $hands = $round->hands();
+        $this->assertCount(2, $hands);
+        $this->assertContains($h1, $hands);
+        $this->assertContains($h2, $hands);
     }
 
     public function a_croupier_will_divide_a_carddeck_among_hands()
