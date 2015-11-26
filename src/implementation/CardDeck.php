@@ -2,7 +2,6 @@
 
 namespace domain\implementation;
 
-use domain\blueprint\Card;
 use domain\blueprint\CardFactoryInterface;
 use domain\blueprint\DeckInterface;
 

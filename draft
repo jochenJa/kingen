@@ -9,3 +9,25 @@
 - a deck contains 52 unique cards
 - a card is unique if it differs from other cards in kind or in value
 
+round :
+ states :
+  - prepare
+     - setup [hand] per player.
+     - injected [croupier] divides a given [cardDeck] among registered [hand]
+  - play
+  - finished
+
+ assets :
+ - hands assigned to a player.
+
+
+is it possible to dynamically build a card game ?
+achievement 1:
+ - complete a game with 1 round, 1 hand with 4 cards & rule :
+    - [round] [end] when [all hand] are [empty].
+
+achievement 2:
+ - complete a game with 1 round , 4 hands with 13 cards,  & following rules :
+    - [round] [end] when [all hand] are [empty].
+    - a slag is won by the hand with the highest drawn card.
+    - round is won by the hand with the most slags.
