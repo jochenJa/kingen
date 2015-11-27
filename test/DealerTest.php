@@ -32,6 +32,10 @@ class DealerTest extends \PHPUnit_Framework_TestCase
         $hands = [new Hand(), new Hand(), new Hand()];
         $deck = $this->mockedDeckWillReturn(
             [new Card('1','1'), new Card('2','2')],
+            [new Card('1','1'), new Card('2','2')],
+            [new Card('1','1'), new Card('2','2')],
+            [new Card('5','5'), new Card('4','4'), new Card('3','3')],
+            [new Card('5','5'), new Card('4','4'), new Card('3','3')],
             [new Card('5','5'), new Card('4','4'), new Card('3','3')]
         );
 
@@ -39,11 +43,11 @@ class DealerTest extends \PHPUnit_Framework_TestCase
         $dealer->deal(...$hands);
 
         $this->assertSame(
-            [5, 5, 5],
-            array_map(
+            '555',
+            implode('',array_map(
                 function(Hand $hand) { return count($hand->cards()); },
                 $hands
-            )
+            ))
         );
     }
 
@@ -55,7 +59,7 @@ class DealerTest extends \PHPUnit_Framework_TestCase
         $mock = $this->getMockBuilder('domain\blueprint\DeckInterface')
             ->getMock();
         $mock
-            ->expects($this->exactly(count($returns)))
+            ->expects($this->any())
             ->method('drawCards')
             ->willReturnOnConsecutiveCalls(...$returns)
         ;

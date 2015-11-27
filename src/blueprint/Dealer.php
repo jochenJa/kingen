@@ -30,8 +30,9 @@ class Dealer
         foreach($this->deals as $count) {
             array_walk(
                 $hands,
-                function(Hand $hand, $id, $cards) { $hand->takes(...$cards); },
-                $this->deck->drawCards($count)
+                function(Hand $hand) use ($count) {
+                    $hand->takes(...$this->deck->drawCards($count));
+                }
             );
         }
     }

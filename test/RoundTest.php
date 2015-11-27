@@ -37,13 +37,13 @@ class RoundTest extends \PHPUnit_Framework_TestCase
         $round = new Round();
         $round->addHand(new Hand(), new Hand(), new Hand(), new Hand());
 
-        $round->fillHands(new Dealer($deck, 13));
+        $round->fillHands(new Dealer($deck, 4, 5, 4));
 
         $this->assertFalse($deck->hasCards());
         $this->assertSame(
             [13, 13, 13, 13],
             array_map(
-                function(Hand $hand) { return $hand->countCards(); },
+                function(Hand $hand) { return count($hand->cards()); },
                 $round->hands()
             )
         );

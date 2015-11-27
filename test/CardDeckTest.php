@@ -3,8 +3,8 @@
 namespace test;
 
 use domain\blueprint\Card;
+use domain\blueprint\OutOfCardsException;
 use domain\implementation\CardDeck;
-use domain\implementation\OutOfCardsException;
 
 class CardDeckTest extends \PHPUnit_Framework_TestCase
 {
